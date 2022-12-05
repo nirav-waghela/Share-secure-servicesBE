@@ -6,7 +6,7 @@
   "type": "commonjs",
   "private": true,
   "scripts": {
-    "start": "node index"
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC",
