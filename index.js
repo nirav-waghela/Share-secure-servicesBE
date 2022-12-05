@@ -30,6 +30,6 @@ mongoose.connect(
     }
 );
 
-app.listen(PORT, () => {
+app.listen(process.env.PORT || PORT, () => {
     console.log("server running on local host:" + PORT);
 });
