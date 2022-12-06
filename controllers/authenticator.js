@@ -146,16 +146,22 @@ class Controls {
     }
 
     createGroup(values){
+        let {data} = values
         let {
             groupName,
             groupDescription,
             groupCategory,
+            issueDate,
             user
-        } = values;
+        } = data;
+        console.log(values,"inside create group ")
+
+        
 
         return new Promise((resolve, reject) => {
             let GroupSchema = new groupSchema();
             GroupSchema.groupName = groupName;
+            GroupSchema.issueDate = issueDate  
             GroupSchema.groupDescription = groupDescription;
             GroupSchema.groupCategory = groupCategory;
             GroupSchema.groupStatus = false
@@ -196,10 +202,8 @@ class Controls {
     }
 
     getAllGroups(data){
-        console.log(data,"++++++++++ inside")
         return new Promise((resolve,reject)=>{
             if(data.data.status === "ALL"){
-                console.log('inside ALL')
                 groupSchema.find({},(err,allGroups)=>{
                     if(err){
                         reject({

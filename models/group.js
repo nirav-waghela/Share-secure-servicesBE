@@ -6,6 +6,7 @@ const groupSchema = new Schema({
     groupDescription: String,
     groupCategory : String,
     groupStatus:Boolean,
+    issueDate:Date,
     groupOwner: {type: mongoose.Schema.Types.ObjectId, ref: 'user'},
     groupMembers: Array,
     user: {
