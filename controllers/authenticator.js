@@ -13,7 +13,7 @@ class Controls {
     getAllUser(){
         console.log("insied gegt all user")
         return new Promise((resolve,reject)=>{
-            User.find({approved:false},(error,user)=>{
+            User.find({},(error,user)=>{
                 if (error){
                     reject({
                         status:"error",
@@ -28,10 +28,11 @@ class Controls {
     }
 
     changeUserStatus(value){
-        let userData = value
-        console.log('inside change user')
+
+        let {data} = value
+        console.log(value,'inside change user')
         return new Promise((resolve,reject)=>{
-            User.updateOne({_id:userData.id}, {approved:true},(error,user)=>{
+            User.updateOne({_id:data.id}, {approved:data.approved},(error,user)=>{
                 if(error){
                     reject({
                         status:"error",
@@ -179,10 +180,11 @@ class Controls {
     }
 
     approveGroup(values){
-        let { id } = values
+        let {data } = values
+        let { id,groupStatus } = data
         console.log(values,"inside approve group")
         return new Promise((resolve, reject) => {
-            groupSchema.updateOne({_id:id}, {groupStatus:true},(err,group)=>{
+            groupSchema.updateOne({_id:id}, {groupStatus:groupStatus},(err,group)=>{
                 if(err){
                     reject({
                         message:'Error occured',
